@@ -1,0 +1,18 @@
+version: "3.1"
+
+services:
+  web:
+    image: foo:0.0.2
+    container_name: docker-env-network
+    restart: always
+    build: .
+    environment:
+      - BACKEND_SERVER=This message is pass from docker-compose.yml file
+    ports:
+      - "8000:8099"
+    networks:
+      - docker-env-network
+
+networks:
+  docker-env-network:
+    driver: bridge
